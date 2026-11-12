@@ -1,0 +1,27 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 480 320" role="img" aria-label="Illustration d'un chien souriant">
+  <defs>
+    <linearGradient id="bg" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0" stop-color="#fde7c8"/>
+      <stop offset="1" stop-color="#fbcf9c"/>
+    </linearGradient>
+  </defs>
+  <rect width="480" height="320" fill="url(#bg)"/>
+  <circle cx="80" cy="60" r="34" fill="#fff" opacity=".35"/>
+  <circle cx="410" cy="250" r="54" fill="#fff" opacity=".25"/>
+  <!-- oreilles -->
+  <path d="M150 92c-34 6-52 58-40 104 6 22 30 22 40 4 12-24 18-70 0-108z" fill="#8a4b20"/>
+  <path d="M330 92c34 6 52 58 40 104-6 22-30 22-40 4-12-24-18-70 0-108z" fill="#8a4b20"/>
+  <!-- tête -->
+  <ellipse cx="240" cy="168" rx="98" ry="104" fill="#d9893f"/>
+  <ellipse cx="240" cy="214" rx="62" ry="52" fill="#f6d2a5"/>
+  <path d="M240 64c-14 0-24 20-24 44h48c0-24-10-44-24-44z" fill="#f6d2a5" opacity=".7"/>
+  <!-- yeux -->
+  <circle cx="202" cy="150" r="13" fill="#2b1a10"/>
+  <circle cx="278" cy="150" r="13" fill="#2b1a10"/>
+  <circle cx="206" cy="146" r="4" fill="#fff"/>
+  <circle cx="282" cy="146" r="4" fill="#fff"/>
+  <!-- truffe et bouche -->
+  <ellipse cx="240" cy="192" rx="20" ry="14" fill="#2b1a10"/>
+  <path d="M240 206v14M240 220c-10 12-26 12-32 2M240 220c10 12 26 12 32 2" stroke="#2b1a10" stroke-width="5" stroke-linecap="round" fill="none"/>
+  <path d="M228 230c0 22 24 22 24 0z" fill="#ef6f6c"/>
+</svg>
