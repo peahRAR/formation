@@ -1,10 +1,10 @@
 <script setup lang="ts">
-import { ArrowRight, Clock, MonitorPlay, Sparkles, UserRound } from '@lucide/vue'
+import { ArrowRight, Clock, Dumbbell, MonitorPlay, NotebookPen, Presentation, RotateCcw } from '@lucide/vue'
 import { isFullCourse, learningPaths, publishedCourses } from '~/content/catalog'
 import { NuxtLink } from '#components'
 
 const { platform } = useAppConfig()
-useHead({ title: `${platform.name} · Cours interactifs et gratuits` })
+useHead({ title: `${platform.name} · Supports de cours` })
 
 const featured = publishedCourses[0]
 const progress = useProgress()
@@ -12,9 +12,9 @@ const mounted = ref(false)
 onMounted(() => (mounted.value = true))
 
 const features = [
-  { icon: MonitorPlay, title: 'Pensé pour la projection', text: 'Plein écran, gros caractères, notes du formateur.' },
-  { icon: UserRound, title: 'Ou pour apprendre seul', text: 'À votre rythme, progression gardée sur votre appareil.' },
-  { icon: Sparkles, title: 'Interactif', text: 'Du vrai code à modifier, des démonstrations en direct.' },
+  { icon: MonitorPlay, title: 'Pendant la séance', text: 'Projeté en plein écran, avec les démonstrations en direct et les notes du formateur.' },
+  { icon: RotateCcw, title: 'Après la séance', text: 'Les étudiants retrouvent les diapositives pour revoir ce qui a été montré.' },
+  { icon: Dumbbell, title: 'Pour s’entraîner', text: 'Du vrai code à modifier et des exercices « À vous », à refaire autant de fois que nécessaire.' },
 ]
 </script>
 
@@ -25,16 +25,19 @@ const features = [
       <!-- Présentation -->
       <section class="relative" data-accent="indigo">
         <div aria-hidden="true" class="pointer-events-none absolute -top-24 left-1/3 -z-10 size-96 rounded-full bg-accent-soft blur-3xl" />
-        <p class="chip mb-5"><Sparkles :size="13" class="text-accent-fg" /> Gratuit, sans inscription</p>
+        <p class="chip mb-5"><Presentation :size="13" class="text-accent-fg" /> Support de cours</p>
         <h1 class="max-w-3xl text-4xl font-extrabold leading-[1.05] tracking-tight text-balance sm:text-6xl">
-          Comprendre le Web,<br><span class="text-accent">une diapositive à la fois.</span>
+          Les supports de la formation<br><span class="text-accent">développement web.</span>
         </h1>
         <p class="mt-5 max-w-2xl text-lg text-muted text-pretty">
-          Des cours interactifs pour découvrir le développement web : des démonstrations en direct, du code que l’on peut modifier, et un fil rouge qui évolue sous vos yeux.
+          Les diapositives projetées en cours, avec leurs démonstrations et leur code. Après la séance, vous y retrouvez tout ce qui a été vu en classe pour le revoir et vous entraîner.
         </p>
         <div v-if="featured" class="mt-8 flex flex-wrap gap-3">
           <NuxtLink :to="playerLink(featured.id)" class="btn-primary px-5 py-3 text-base">
-            Commencer le premier cours <ArrowRight :size="18" />
+            Ouvrir le cours <ArrowRight :size="18" />
+          </NuxtLink>
+          <NuxtLink :to="`/cours/${featured.id}/notes`" class="btn-secondary px-5 py-3 text-base">
+            <NotebookPen :size="18" /> Notes du formateur
           </NuxtLink>
         </div>
 

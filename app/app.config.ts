@@ -2,6 +2,6 @@
 export default defineAppConfig({
   platform: {
     name: 'Formation Web',
-    tagline: 'Comprendre le Web, pas à pas',
+    tagline: 'Supports de cours',
   },
 })

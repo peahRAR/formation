@@ -24,7 +24,9 @@ export default defineNuxtConfig({
       htmlAttrs: { lang: 'fr' },
       title: 'Formation Web',
       meta: [
-        { name: 'description', content: 'Des cours interactifs et gratuits pour comprendre le développement web.' },
+        { name: 'description', content: 'Supports de cours de la formation développement web.' },
+        // Support réservé aux étudiants de la formation : pas d'indexation.
+        { name: 'robots', content: 'noindex, nofollow' },
         { name: 'theme-color', content: '#0b0d12' },
       ],
       link: [

@@ -42,7 +42,7 @@ function close() {
     <div class="flex items-center gap-2 border-t border-border px-4 py-3">
       <p class="flex flex-1 items-center gap-1.5 text-[0.7rem] leading-tight text-subtle">
         <ShieldCheck :size="14" class="shrink-0" />
-        Progression enregistrée sur cet appareil, sans compte.
+        Votre progression reste sur cet appareil.
       </p>
       <ThemeToggle />
     </div>

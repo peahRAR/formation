@@ -1,2 +1,3 @@
+# Support de cours réservé aux étudiants : pas d'indexation.
 User-agent: *
-Allow: /
+Disallow: /

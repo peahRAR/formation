@@ -1,8 +1,11 @@
 # Formation Web
 
-Plateforme pédagogique gratuite pour apprendre le développement web à l'aide de **présentations interactives** : diapositives animées, code modifiable, démonstrations en direct et quiz.
+Supports de cours de ma formation au développement web, sous forme de **présentations interactives** : diapositives animées, code modifiable, démonstrations en direct et quiz.
 
-Elle s'utilise aussi bien **devant une classe** (plein écran, notes du formateur) que **seul**, à son rythme (progression enregistrée dans le navigateur, sans compte).
+- **D'abord en séance** : projetés devant le groupe (plein écran, notes du formateur).
+- **Ensuite pour les étudiants** : le lien leur est transmis pour revoir le cours et refaire les exercices (progression enregistrée dans leur navigateur).
+
+Le site n'est pas destiné au grand public : il demande aux moteurs de recherche de ne pas l'indexer (`robots.txt` et balise `noindex`).
 
 Premier cours disponible : **« Un site web, comment ça marche ? »**, 8 sections et 44 diapositives.
 

@@ -2,7 +2,7 @@
   "name": "formation",
   "private": true,
   "type": "module",
-  "description": "Plateforme interactive et gratuite d'apprentissage du développement web.",
+  "description": "Supports de cours interactifs de la formation développement web.",
   "engines": {
     "node": ">=20.19.0"
   },
