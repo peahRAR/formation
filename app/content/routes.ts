@@ -9,5 +9,5 @@ export function prerenderRoutes(): string[] {
     .flatMap((p) => p.courses)
     .filter(isFullCourse)
     .filter((c) => c.status === 'published')
-    .flatMap((c) => [`/cours/${c.id}`, `/cours/${c.id}/complet`, `/cours/${c.id}/express`, `/cours/${c.id}/notes`])
+    .flatMap((c) => [`/cours/${c.id}`, `/cours/${c.id}/presentation`, `/cours/${c.id}/notes`])
 }

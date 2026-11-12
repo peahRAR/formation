@@ -11,7 +11,6 @@ export const sectionHtml: Section = {
     {
       id: 'html-intro',
       kind: 'text',
-      express: true,
       eyebrow: 'Section 2 · HTML',
       title: 'HTML : créer la structure',
       lead: 'HTML décrit le contenu d’une page et le rôle de chaque morceau : « ceci est un titre », « ceci est un paragraphe », « ceci est un bouton ».',
@@ -28,7 +27,6 @@ Insister sur l'idée d'étiquettes : chaque balise indique ce que représente le
     {
       id: 'html-premiere-fiche',
       kind: 'demo',
-      express: true,
       demo: 'html-linked',
       props: { html: HTML_V1, file: 'index.html' },
       eyebrow: 'Section 2 · HTML',
@@ -41,7 +39,6 @@ Survoler chaque ligne pour montrer la correspondance code ↔ rendu. Faire repé
     {
       id: 'html-imbrication',
       kind: 'demo',
-      express: true,
       demo: 'html-nesting',
       eyebrow: 'Section 2 · HTML',
       title: 'Des balises dans des balises',
@@ -59,7 +56,6 @@ Cette idée d'emboîtement servira à nouveau pour le DOM (section 5), qui est u
     {
       id: 'html-balises',
       kind: 'demo',
-      express: true,
       demo: 'html-tags',
       props: { html: HTML_CARD },
       eyebrow: 'Section 2 · HTML',

@@ -1,6 +1,6 @@
 <script setup lang="ts">
-/** Sommaire d'un cours : objectifs, sections, choix du mode. */
-import { ArrowRight, BookOpen, Check, Clock, GraduationCap, NotebookPen, RotateCcw, Target, Timer } from '@lucide/vue'
+/** Sommaire d'un cours : objectifs, sections, progression. */
+import { ArrowRight, BookOpen, Check, Clock, GraduationCap, NotebookPen, RotateCcw, Target } from '@lucide/vue'
 
 const course = useCurrentCourse()
 const progress = useProgress()
@@ -9,10 +9,9 @@ onMounted(() => (mounted.value = true))
 
 useHead(() => ({ title: course.value.title, meta: [{ name: 'description', content: course.value.description }] }))
 
-const fullCount = computed(() => countSlides(course.value, 'complet'))
-const expressCount = computed(() => countSlides(course.value, 'express'))
+const fullCount = computed(() => countSlides(course.value))
 const percent = computed(() => (mounted.value ? progress.percent(course.value) : 0))
-const resumeId = computed(() => (mounted.value ? progress.get(course.value.id).last.complet : undefined))
+const resumeId = computed(() => (mounted.value ? progress.get(course.value.id).last : undefined))
 
 const confirmReset = ref(false)
 function reset() {
@@ -33,34 +32,13 @@ function reset() {
       <p class="mb-4 flex flex-wrap gap-2">
         <span class="chip"><GraduationCap :size="13" /> {{ course.level }}</span>
         <span class="chip"><Clock :size="13" /> {{ formatDuration(course.duration) }} · {{ fullCount }} diapositives</span>
-        <span class="chip"><Timer :size="13" /> Express : {{ course.expressDuration }} min · {{ expressCount }} diapositives</span>
       </p>
       <h1 class="text-4xl font-extrabold tracking-tight text-balance sm:text-5xl">{{ course.title }}</h1>
       <p class="mt-4 max-w-2xl text-lg text-muted text-pretty">{{ course.description }}</p>
 
-      <!-- Deux modes -->
-      <div class="mt-8 grid grid-cols-1 gap-4 md:grid-cols-2">
-        <NuxtLink :to="playerLink(course.id, 'complet', resumeId)" class="card group flex gap-4 p-5 transition hover:border-accent hover:shadow-lg">
-          <span class="grid size-12 shrink-0 place-items-center rounded-xl bg-accent text-white"><BookOpen :size="22" /></span>
-          <span class="flex-1">
-            <span class="flex items-center gap-2 font-bold">
-              {{ resumeId ? 'Reprendre la formation complète' : 'Formation complète' }}
-              <ArrowRight :size="16" class="text-accent-fg transition group-hover:translate-x-1" />
-            </span>
-            <span class="mt-1 block text-sm text-muted">Toutes les sections, les explications détaillées et les exercices « À vous ».</span>
-          </span>
-        </NuxtLink>
-        <NuxtLink :to="playerLink(course.id, 'express')" class="card group flex gap-4 p-5 transition hover:border-accent hover:shadow-lg">
-          <span class="grid size-12 shrink-0 place-items-center rounded-xl bg-surface-3 text-fg"><Timer :size="22" /></span>
-          <span class="flex-1">
-            <span class="flex items-center gap-2 font-bold">
-              Présentation express · {{ course.expressDuration }} min
-              <ArrowRight :size="16" class="text-accent-fg transition group-hover:translate-x-1" />
-            </span>
-            <span class="mt-1 block text-sm text-muted">Les diapositives essentielles, idéal pour une présentation devant un groupe.</span>
-          </span>
-        </NuxtLink>
-      </div>
+      <NuxtLink :to="playerLink(course.id, resumeId)" class="btn-primary mt-8 px-5 py-3 text-base">
+        <BookOpen :size="18" /> {{ resumeId ? 'Reprendre le cours' : 'Commencer le cours' }} <ArrowRight :size="18" />
+      </NuxtLink>
 
       <div class="mt-10 grid grid-cols-1 gap-10 lg:grid-cols-[minmax(0,1fr)_18rem]">
         <!-- Sections -->
@@ -68,7 +46,7 @@ function reset() {
           <h2 class="mb-4 text-lg font-bold">Au programme</h2>
           <ol class="space-y-3">
             <li v-for="(section, i) in course.sections" :key="section.id" :data-accent="section.accent" class="card overflow-hidden">
-              <NuxtLink :to="playerLink(course.id, 'complet', section.slides[0]?.id)" class="group flex items-center gap-4 p-4 transition hover:bg-surface-2">
+              <NuxtLink :to="playerLink(course.id, section.slides[0]?.id)" class="group flex items-center gap-4 p-4 transition hover:bg-surface-2">
                 <span class="grid size-11 shrink-0 place-items-center rounded-xl bg-accent-soft text-accent-fg"><AppIcon :name="section.icon" :size="20" /></span>
                 <span class="min-w-0 flex-1">
                   <span class="text-xs font-semibold uppercase tracking-wider text-accent-fg">Section {{ i + 1 }}</span>

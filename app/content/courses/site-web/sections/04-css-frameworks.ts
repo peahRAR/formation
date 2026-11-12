@@ -26,7 +26,6 @@ Un framework CSS est une boîte à outils de styles déjà écrits par d'autres.
     {
       id: 'frameworks-css-comparaison',
       kind: 'demo',
-      express: true,
       demo: 'css-frameworks',
       eyebrow: 'Section 4 · Frameworks CSS',
       title: 'Une même fiche, trois façons',

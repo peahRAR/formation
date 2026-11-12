@@ -10,7 +10,6 @@ export const sectionJsFrameworks: Section = {
     {
       id: 'frameworks-js-pourquoi',
       kind: 'text',
-      express: true,
       eyebrow: 'Section 7 · Frameworks JavaScript',
       title: 'Quand l’interface grandit…',
       lead: 'Une fiche, ça va. Mais une application avec des centaines de boutons, de listes et de formulaires devient vite difficile à gérer « à la main ».',
@@ -26,7 +25,6 @@ Avec un framework, on décrit plutôt « ce que la page doit afficher en fonctio
     {
       id: 'frameworks-js-panorama',
       kind: 'demo',
-      express: true,
       demo: 'js-frameworks',
       eyebrow: 'Section 7 · Frameworks JavaScript',
       title: 'Quatre outils très utilisés',
@@ -42,7 +40,6 @@ Différences de philosophie, en une phrase :
     {
       id: 'frameworks-js-vue',
       kind: 'demo',
-      express: true,
       demo: 'vue-component',
       eyebrow: 'Section 7 · Frameworks JavaScript',
       title: 'Notre fiche, en composant Vue.js',

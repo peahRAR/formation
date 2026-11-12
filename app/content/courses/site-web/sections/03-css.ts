@@ -11,7 +11,6 @@ export const sectionCss: Section = {
     {
       id: 'css-intro',
       kind: 'illustration',
-      express: true,
       illustration: 'css-anatomy',
       eyebrow: 'Section 3 · CSS',
       title: 'CSS : donner du style',
@@ -23,7 +22,6 @@ Une règle CSS = un sélecteur (à qui ?) + des propriétés et des valeurs (quo
     {
       id: 'css-etapes',
       kind: 'demo',
-      express: true,
       demo: 'css-steps',
       props: { html: HTML_CARD },
       eyebrow: 'Section 3 · CSS',
@@ -38,7 +36,6 @@ Le sélecteur .fiche (avec un point) cible la classe que nous avions mise sur la
     {
       id: 'css-cascade',
       kind: 'demo',
-      express: true,
       demo: 'css-cascade',
       eyebrow: 'Section 3 · CSS',
       title: 'La cascade : quelle règle gagne ?',

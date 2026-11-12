@@ -1,9 +1,9 @@
 <script setup lang="ts">
-import { CircleHelp, LayoutList, Maximize, Minimize, NotebookPen, Timer, BookOpen } from '@lucide/vue'
-import type { Course, PlayerMode, Section } from '~/types/course'
+import { CircleHelp, LayoutList, Maximize, Minimize, NotebookPen } from '@lucide/vue'
+import type { Course, Section } from '~/types/course'
 
-defineProps<{ course: Course; mode: PlayerMode; section: Section; isFullscreen: boolean }>()
-defineEmits<{ 'switch-mode': [mode: PlayerMode]; 'toggle-fullscreen': []; help: [] }>()
+defineProps<{ course: Course; section: Section; isFullscreen: boolean }>()
+defineEmits<{ 'toggle-fullscreen': []; help: [] }>()
 
 const { notesOpen } = useUi()
 </script>
@@ -19,26 +19,6 @@ const { notesOpen } = useUi()
         <span class="grid size-6 shrink-0 place-items-center rounded-md bg-accent-soft text-accent-fg"><AppIcon :name="section.icon" :size="14" /></span>
         <span class="truncate">{{ section.title }}</span>
       </span>
-    </div>
-
-    <!-- Choix du mode -->
-    <div class="hidden items-center rounded-xl border border-border bg-surface-2 p-0.5 sm:flex" role="group" aria-label="Mode de consultation">
-      <button
-        class="inline-flex items-center gap-1.5 rounded-[0.6rem] px-2.5 py-1 text-xs font-semibold transition"
-        :class="mode === 'complet' ? 'bg-surface text-fg shadow-sm' : 'text-muted hover:text-fg'"
-        :aria-pressed="mode === 'complet'"
-        @click="$emit('switch-mode', 'complet')"
-      >
-        <BookOpen :size="14" /> Complet
-      </button>
-      <button
-        class="inline-flex items-center gap-1.5 rounded-[0.6rem] px-2.5 py-1 text-xs font-semibold transition"
-        :class="mode === 'express' ? 'bg-surface text-fg shadow-sm' : 'text-muted hover:text-fg'"
-        :aria-pressed="mode === 'express'"
-        @click="$emit('switch-mode', 'express')"
-      >
-        <Timer :size="14" /> Express {{ course.expressDuration ?? 15 }} min
-      </button>
     </div>
 
     <div class="flex items-center">

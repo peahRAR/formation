@@ -11,7 +11,6 @@ export const sectionApi: Section = {
     {
       id: 'api-question',
       kind: 'text',
-      express: true,
       statement: true,
       eyebrow: 'Section 6 · API',
       title: 'Et si nous voulions afficher des informations qui ne se trouvent pas déjà dans notre page ?',
@@ -23,7 +22,6 @@ La solution : demander la photo, au moment du clic, à un service qui les possè
     {
       id: 'api-role',
       kind: 'illustration',
-      express: true,
       illustration: 'api-role',
       eyebrow: 'Section 6 · API',
       title: 'Une API : un guichet pour demander des données',
@@ -73,7 +71,6 @@ Pas besoin d'en connaître la syntaxe : retenir que c'est un format lisible à l
     {
       id: 'api-demo',
       kind: 'demo',
-      express: true,
       demo: 'api-live',
       eyebrow: 'Section 6 · API',
       title: 'La vraie démonstration',

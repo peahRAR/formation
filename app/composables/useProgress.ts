@@ -7,8 +7,8 @@ import type { Course } from '~/types/course'
 interface CourseProgress {
   /** Identifiants des diapositives déjà vues. */
   seen: string[]
-  /** Dernière diapositive consultée, par mode. */
-  last: Partial<Record<string, string>>
+  /** Dernière diapositive consultée. */
+  last?: string
   /** Réponses au quiz : id de question → index du choix. */
   quiz: Record<string, number>
   updatedAt: number
@@ -19,7 +19,7 @@ type ProgressStore = Record<string, CourseProgress>
 const STORAGE_KEY = 'fw-progress-v1'
 
 function emptyProgress(): CourseProgress {
-  return { seen: [], last: {}, quiz: {}, updatedAt: 0 }
+  return { seen: [], quiz: {}, updatedAt: 0 }
 }
 
 export function useProgress() {
@@ -55,10 +55,10 @@ export function useProgress() {
     return store.value[courseId]!
   }
 
-  function markSeen(courseId: string, slideId: string, mode: string) {
+  function markSeen(courseId: string, slideId: string) {
     const p = ensure(courseId)
     if (!p.seen.includes(slideId)) p.seen.push(slideId)
-    p.last[mode] = slideId
+    p.last = slideId
     p.updatedAt = Date.now()
     persist()
   }
@@ -84,7 +84,7 @@ export function useProgress() {
     return get(courseId).seen.includes(slideId)
   }
 
-  /** Pourcentage de diapositives vues (mode complet). */
+  /** Pourcentage de diapositives vues. */
   function percent(course: Course): number {
     const ids = course.sections.flatMap((s) => s.slides.map((sl) => sl.id))
     if (!ids.length) return 0

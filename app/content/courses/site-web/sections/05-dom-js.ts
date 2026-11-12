@@ -26,7 +26,6 @@ Le fichier HTML est la recette ; le DOM est le plat préparé, que l'on peut enc
     {
       id: 'dom-construction',
       kind: 'demo',
-      express: true,
       demo: 'dom-build',
       props: { html: HTML_CARD },
       eyebrow: 'Section 5 · Le DOM',
@@ -39,7 +38,6 @@ Le DOM est la représentation de la page que garde le navigateur. C'est lui, et 
     {
       id: 'dom-explorateur',
       kind: 'demo',
-      express: true,
       demo: 'dom-explorer',
       eyebrow: 'Section 5 · Le DOM',
       title: 'Explorez l’arbre',
@@ -67,7 +65,6 @@ Nous n'apprenons pas à programmer ici : nous regardons ce que JavaScript permet
     {
       id: 'js-clic',
       kind: 'demo',
-      express: true,
       demo: 'js-click',
       eyebrow: 'Section 5 · JavaScript',
       title: 'Quand on clique, le texte change',

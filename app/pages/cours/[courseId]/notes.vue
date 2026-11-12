@@ -3,7 +3,7 @@
  * Toutes les notes du formateur sur une seule page, consultables hors du
  * mode projection (sur un second écran, une tablette, ou imprimées).
  */
-import { Printer, Timer } from '@lucide/vue'
+import { Printer } from '@lucide/vue'
 
 const course = useCurrentCourse()
 useHead(() => ({ title: `Notes du formateur · ${course.value.title}` }))
@@ -29,7 +29,7 @@ function print() {
     </PageTopbar>
     <div class="mx-auto max-w-3xl px-5 py-10 sm:px-8">
       <h1 class="text-3xl font-extrabold tracking-tight">Notes du formateur</h1>
-      <p class="mt-2 text-muted">{{ course.title }} · les diapositives du parcours express sont signalées.</p>
+      <p class="mt-2 text-muted">{{ course.title }}</p>
 
       <section v-for="{ section, slides } in numbered" :key="section.id" :data-accent="section.accent" class="mt-10 break-inside-avoid-page">
         <h2 class="mb-4 flex items-center gap-2 border-b border-border pb-2 text-lg font-bold">
@@ -38,10 +38,9 @@ function print() {
         </h2>
         <article v-for="{ slide, n, paragraphs } in slides" :key="slide.id" class="mb-6 break-inside-avoid">
           <h3 class="flex flex-wrap items-center gap-2 font-semibold">
-            <NuxtLink :to="playerLink(course.id, 'complet', slide.id)" class="hover:text-accent-fg">
+            <NuxtLink :to="playerLink(course.id, slide.id)" class="hover:text-accent-fg">
               <span class="tabular-nums text-subtle">{{ n }}.</span> {{ slide.title }}
             </NuxtLink>
-            <span v-if="slide.express" class="chip py-0.5"><Timer :size="11" /> Express</span>
           </h3>
           <p v-for="(p, i) in paragraphs" :key="i" class="mt-1.5 whitespace-pre-line text-[0.95rem] leading-relaxed text-muted">{{ p }}</p>
           <p v-if="!paragraphs.length" class="mt-1 text-sm text-subtle italic">Pas de note.</p>

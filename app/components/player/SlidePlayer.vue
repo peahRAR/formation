@@ -7,9 +7,9 @@
  * - Navigation : boutons, barre de progression, clavier (← → Espace Début Fin).
  * - Raccourcis : F plein écran, S barre latérale, N notes, ? aide.
  */
-import type { Course, PlayerMode } from '~/types/course'
+import type { Course } from '~/types/course'
 
-const props = defineProps<{ course: Course; mode: PlayerMode }>()
+const props = defineProps<{ course: Course }>()
 
 const route = useRoute()
 const router = useRouter()
@@ -21,7 +21,7 @@ const stage = ref<HTMLElement>()
 const { isFullscreen, toggle: toggleFullscreen } = useFullscreen(root)
 const helpOpen = ref(false)
 
-const sequence = computed(() => buildSequence(props.course, props.mode))
+const sequence = computed(() => buildSequence(props.course))
 const index = computed(() => {
   const id = String(route.query.diapo ?? '')
   const i = sequence.value.findIndex((s) => s.slide.id === id)
@@ -39,27 +39,15 @@ function goTo(i: number) {
 const next = () => goTo(index.value + 1)
 const prev = () => goTo(index.value - 1)
 
-/** Change de mode en restant au plus près de la diapositive courante. */
-function switchMode(mode: PlayerMode) {
-  if (mode === props.mode) return
-  const all = buildSequence(props.course, 'complet')
-  const pos = all.findIndex((s) => s.slide.id === current.value.slide.id)
-  let target = current.value.slide
-  if (mode === 'express' && !target.express) {
-    target = all.slice(pos).find((s) => s.slide.express)?.slide ?? all.filter((s) => s.slide.express).at(-1)!.slide
-  }
-  router.push({ path: `/cours/${props.course.id}/${mode}`, query: { diapo: target.id } })
-}
-
 // Mémorise la progression et remet le défilement en haut à chaque diapositive.
 watch(
   () => current.value.slide.id,
   (id) => {
-    progress.markSeen(props.course.id, id, props.mode)
+    progress.markSeen(props.course.id, id)
     stage.value?.scrollTo({ top: 0 })
   },
 )
-onMounted(() => progress.markSeen(props.course.id, current.value.slide.id, props.mode))
+onMounted(() => progress.markSeen(props.course.id, current.value.slide.id))
 
 function isTyping(el: EventTarget | null) {
   const t = el as HTMLElement | null
@@ -128,10 +116,8 @@ useHead(() => ({
   <div ref="root" class="flex h-full flex-col bg-bg" :data-accent="current.section.accent">
     <PlayerTopbar
       :course="course"
-      :mode="mode"
       :section="current.section"
       :is-fullscreen="isFullscreen"
-      @switch-mode="switchMode"
       @toggle-fullscreen="toggleFullscreen"
       @help="helpOpen = true"
     />

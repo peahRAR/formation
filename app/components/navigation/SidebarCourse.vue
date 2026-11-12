@@ -1,7 +1,7 @@
 <script setup lang="ts">
 /** Un cours dans la sidebar ; s'il est ouvert, ses sections apparaissent. */
 import { Check, ChevronRight, Clock } from '@lucide/vue'
-import type { CatalogEntry, PlayerMode } from '~/types/course'
+import type { CatalogEntry } from '~/types/course'
 import { isFullCourse } from '~/content/catalog'
 
 const props = defineProps<{ entry: CatalogEntry }>()
@@ -13,13 +13,12 @@ onMounted(() => (mounted.value = true))
 
 const course = computed(() => (isFullCourse(props.entry) ? props.entry : null))
 const isCurrent = computed(() => route.params.courseId === props.entry.id)
-const mode = computed<PlayerMode>(() => (route.params.mode === 'express' ? 'express' : 'complet'))
-const inPlayer = computed(() => isCurrent.value && (route.params.mode === 'complet' || route.params.mode === 'express'))
+const inPlayer = computed(() => isCurrent.value && route.path.endsWith('/presentation'))
 
 const currentSectionId = computed(() => {
   if (!course.value || !inPlayer.value || !mounted.value) return null
   const slideId = String(route.query.diapo ?? '')
-  const seq = buildSequence(course.value, mode.value)
+  const seq = buildSequence(course.value)
   return (seq.find((s) => s.slide.id === slideId) ?? seq[0])?.section.id ?? null
 })
 
@@ -27,8 +26,7 @@ const percent = computed(() => (course.value && mounted.value ? progress.percent
 
 function sectionLink(sectionId: string) {
   const section = course.value!.sections.find((s) => s.id === sectionId)!
-  const target = mode.value === 'express' ? section.slides.find((s) => s.express) : section.slides[0]
-  return target ? playerLink(props.entry.id, mode.value, target.id) : playerLink(props.entry.id, 'complet', section.slides[0]?.id)
+  return playerLink(props.entry.id, section.slides[0]?.id)
 }
 
 function sectionPercent(sectionId: string) {

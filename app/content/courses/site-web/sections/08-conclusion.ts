@@ -9,7 +9,6 @@ export const sectionConclusion: Section = {
     {
       id: 'recapitulatif',
       kind: 'demo',
-      express: true,
       demo: 'recap',
       eyebrow: 'Section 8 · Conclusion',
       title: 'Le chemin parcouru',
@@ -21,7 +20,6 @@ Revoir la fiche à chaque étape pour mesurer le chemin parcouru.`,
     {
       id: 'quiz',
       kind: 'quiz',
-      express: true,
       eyebrow: 'Section 8 · Quiz',
       title: 'Avez-vous bien suivi ?',
       subtitle: 'Six questions rapides, avec la correction à chaque fois.',
@@ -94,7 +92,6 @@ Chaque correction rappelle la diapositive concernée.`,
     {
       id: 'fin',
       kind: 'title',
-      express: true,
       eyebrow: 'Félicitations',
       title: 'Vous savez comment fonctionne un site web !',
       subtitle: 'Prochaines étapes : des cours dédiés au HTML, au CSS, à JavaScript et à Vue.js.',

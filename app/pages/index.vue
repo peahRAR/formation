@@ -1,6 +1,7 @@
 <script setup lang="ts">
-import { ArrowRight, Clock, MonitorPlay, Sparkles, Timer, UserRound } from '@lucide/vue'
+import { ArrowRight, Clock, MonitorPlay, Sparkles, UserRound } from '@lucide/vue'
 import { isFullCourse, learningPaths, publishedCourses } from '~/content/catalog'
+import { NuxtLink } from '#components'
 
 const { platform } = useAppConfig()
 useHead({ title: `${platform.name} · Cours interactifs et gratuits` })
@@ -32,11 +33,8 @@ const features = [
           Des cours interactifs pour découvrir le développement web : des démonstrations en direct, du code que l’on peut modifier, et un fil rouge qui évolue sous vos yeux.
         </p>
         <div v-if="featured" class="mt-8 flex flex-wrap gap-3">
-          <NuxtLink :to="playerLink(featured.id, 'complet')" class="btn-primary px-5 py-3 text-base">
+          <NuxtLink :to="playerLink(featured.id)" class="btn-primary px-5 py-3 text-base">
             Commencer le premier cours <ArrowRight :size="18" />
-          </NuxtLink>
-          <NuxtLink :to="playerLink(featured.id, 'express')" class="btn-secondary px-5 py-3 text-base">
-            <Timer :size="18" /> Version express ({{ featured.expressDuration }} min)
           </NuxtLink>
         </div>
 
@@ -63,7 +61,7 @@ const features = [
         <ul class="grid grid-cols-1 gap-4 md:grid-cols-2 lg:grid-cols-3">
           <li v-for="entry in path.courses" :key="entry.id">
             <component
-              :is="isFullCourse(entry) ? resolveComponent('NuxtLink') : 'div'"
+              :is="isFullCourse(entry) ? NuxtLink : 'div'"
               :to="isFullCourse(entry) ? `/cours/${entry.id}` : undefined"
               class="card group flex h-full flex-col p-5 transition"
               :class="isFullCourse(entry) ? 'hover:-translate-y-0.5 hover:border-border-strong hover:shadow-lg' : 'opacity-70'"

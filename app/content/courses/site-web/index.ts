@@ -16,7 +16,6 @@ export const courseSiteWeb: Course = {
   category: 'fondamentaux',
   level: 'Découverte',
   duration: 60,
-  expressDuration: 15,
   status: 'published',
   icon: 'Globe',
   objectives: [

@@ -10,7 +10,6 @@ export const sectionSiteWeb: Section = {
     {
       id: 'couverture',
       kind: 'title',
-      express: true,
       eyebrow: 'Cours 1 · Découverte',
       title: 'Un site web, comment ça marche ?',
       subtitle: 'Une visite guidée des coulisses du Web, pensée pour les débutants complets.',
@@ -24,7 +23,6 @@ Astuce : la touche F passe en plein écran, la touche S masque la barre latéral
     {
       id: 'fil-rouge',
       kind: 'demo',
-      express: true,
       demo: 'dog-teaser',
       eyebrow: 'Notre fil rouge',
       title: 'La fiche « Le chien du jour »',
@@ -47,7 +45,6 @@ Cliquer sur les pages du schéma pour montrer la navigation d'une page à l'autr
     {
       id: 'navigateur',
       kind: 'illustration',
-      express: true,
       illustration: 'browser-server',
       eyebrow: 'Section 1 · Les bases',
       title: 'Le rôle du navigateur',
@@ -78,7 +75,6 @@ La diapositive suivante développe l'analogie du restaurant.`,
     {
       id: 'restaurant',
       kind: 'illustration',
-      express: true,
       illustration: 'restaurant',
       props: { variant: 'front-back' },
       eyebrow: 'Section 1 · Les bases',

@@ -13,9 +13,6 @@ export type CourseLevel = 'Découverte' | 'Débutant' | 'Intermédiaire' | 'Avan
 /** Couleur d'accent associée à une section (codes couleur par technologie). */
 export type Accent = 'indigo' | 'orange' | 'blue' | 'sky' | 'amber' | 'emerald' | 'violet' | 'rose'
 
-/** Mode de consultation d'un cours. */
-export type PlayerMode = 'complet' | 'express'
-
 export type CodeLang = 'html' | 'css' | 'js' | 'json' | 'vue' | 'text'
 
 export interface CodeFile {
@@ -34,8 +31,6 @@ interface SlideBase {
   /** Petite ligne au-dessus du titre (ex. « Section 2 · HTML »). */
   eyebrow?: string
   subtitle?: string
-  /** La diapositive fait partie du parcours express (~15 min). */
-  express?: boolean
   /** Notes du formateur, en texte simple (un paragraphe par ligne vide). */
   notes?: string
 }
@@ -142,10 +137,8 @@ export interface Course {
   /** Identifiant du parcours (catégorie). */
   category: string
   level: CourseLevel
-  /** Durée indicative du mode complet, en minutes. */
+  /** Durée indicative, en minutes. */
   duration: number
-  /** Durée indicative du parcours express, en minutes. */
-  expressDuration?: number
   status: CourseStatus
   icon: string
   /** Ce que l'apprenant saura faire à la fin. */
@@ -179,7 +172,7 @@ export interface LearningPath {
 export interface PlayerSlide {
   slide: Slide
   section: Section
-  /** Index dans la séquence du mode courant. */
+  /** Index dans la séquence du cours. */
   index: number
   /** Index de la section dans le cours. */
   sectionIndex: number
